@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Error404Page from "../pages/Error404Page/Error404Page";
 import Blog from "../pages/Blog/Blog";
+import AllToys from "../pages/AllToys/AllToys";
 
 const router = createBrowserRouter([
   {
@@ -24,15 +25,19 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: 'blog',
-        element: <Blog></Blog>
+        path: "blog",
+        element: <Blog></Blog>,
+      },
+      {
+        path: "all-toys",
+        element: <AllToys></AllToys>
       }
     ],
   },
   {
-    path: '*',
-    element: <Error404Page></Error404Page>
-  }
+    path: "*",
+    element: <Error404Page></Error404Page>,
+  },
 ]);
 
 export default router;
