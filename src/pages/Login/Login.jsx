@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
+
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
-  
+  const { signInUser , userSignWithGoogle } = useContext(AuthContext);
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,6 +21,14 @@ const Login = () => {
         console.log(error.massage);
       });
   };
+
+  // SignWith Google 
+
+  const handleSignWithGoogle = () =>{
+    userSignWithGoogle();
+  }
+
+
   return (
     <div>
       <div className="hero min-h-screen   bg-[#F379A7]">
@@ -80,6 +89,11 @@ const Login = () => {
                   Register
                 </Link>
               </p>
+              <div className="text-center">
+                <p className="text-center font-bold text-2xl">or</p>
+                <hr />
+                <button  onClick={handleSignWithGoogle} className="bg-[#C2E0EB] hover:bg-[#93dbf5] mt-2 p-[8px] w-full rounded-lg flex justify-center items-center gap-6"><img className="w-[35px]" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="" /> Sign in With Google</button>
+              </div>
             </div>
           </div>
         </div>
