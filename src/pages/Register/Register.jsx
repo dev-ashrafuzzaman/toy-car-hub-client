@@ -5,22 +5,25 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createAccountWithEmailAndPassword } = useContext(AuthContext);
 
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
+        const photoUrl = form.photoUrl.value;
         const password = form.password.value;
-        console.log(email, password);
-        createUser(email, password)
-            .then((result) => {
-                const user = result.user;
-                console.log(user);
-            })
-            .catch((error) => {
-                console.log(error.massage);
-            });
+        console.log(email, password , name , photoUrl);
+        createAccountWithEmailAndPassword(email, password , name , photoUrl)
+        .then(user => {
+            // Account creation and profile update successful
+            console.log('User created:', user);
+          })
+          .catch(error => {
+            // Handle error
+            console.error('Error creating account:', error);
+          });
     };
 
     return (
@@ -46,7 +49,7 @@ const Register = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        name="Name"
+                                        name="name"
                                         placeholder="Name"
                                         className="input input-bordered"
                                     />

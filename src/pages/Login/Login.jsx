@@ -25,7 +25,14 @@ const Login = () => {
   // SignWith Google 
 
   const handleSignWithGoogle = () =>{
-    userSignWithGoogle();
+    userSignWithGoogle()
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+    })
+    .catch((error) => {
+      console.log(error.massage);
+    });
   }
 
 
