@@ -29,12 +29,12 @@ const Header = () => {
                     <div>
                         <ul className="menu menu-horizontal px-1 flex justify-center items-center">
                             <li className='md:contents hidden'><Link to='/'>Home</Link></li>
-                            <li className='md:contents hidden'><Link to='/blog'>Blog</Link></li>
+                            <li className='md:contents hidden'><Link to='/blog'>Blogs</Link></li>
                             <li className='md:contents hidden'><Link to='/all-toys'>All Toys</Link></li>
                             {
                                 user?.email ? <>
                                     <li className='md:contents hidden'><Link to='/my-toys'>My Toys</Link></li>
-                                    <li className='md:contents hidden'><Link to='/add-a-toy'>Add a Toy</Link></li>
+                                    <li className='md:contents hidden'><Link to='/add-a-toy'>Add A Toy</Link></li>
                                     <li className='md:contents hidden'><Link ><button onClick={handleLogOut}>Logout</button ></Link></li>
                                 </> : <li className='md:contents hidden'><Link to='/login'>Login</Link></li>
                             }
