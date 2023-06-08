@@ -5,7 +5,7 @@ import 'react-tabs/style/react-tabs.css';
 const ReactTabs = () => {
     return (
         <div className='container mx-auto md:p-10 p-2'>
-            <div className=''>
+            <div>
                 <Tabs >
                     <TabList className="tabs font-bold gap-10 mb-10">
                         <Tab className="tab tab-lg tab-lifted text-white bg-[#f379a7]">Sports car</Tab>
