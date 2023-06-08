@@ -5,16 +5,17 @@ import 'react-tabs/style/react-tabs.css';
 const ReactTabs = () => {
     return (
         <div className='container mx-auto md:p-10 p-2'>
+            <h2 className='text-center my-10 font-bold text-4xl text-[#f379a7]'>Products by Sub category</h2>
             <div>
                 <Tabs >
-                    <TabList className="tabs font-bold gap-10 mb-10">
+                    <TabList className="tabs font-bold md:gap-10 gap-2 mb-10">
                         <Tab className="tab tab-lg tab-lifted text-white bg-[#f379a7]">Sports car</Tab>
                         <Tab className="tab tab-lg tab-lifted  text-white bg-[#f379a7]" >Truck</Tab>
                         <Tab className="tab  tab-lg tab-lifted  text-white bg-[#f379a7]">Fire truck</Tab>
                     </TabList>
 
                     <TabPanel>
-                        <div className='grid grid-cols-4 gap-4'>
+                        <div className='grid md:grid-cols-4 gap-4'>
                         
                         <div className="card  bg-base-100 shadow-xl">
                             <figure className="px-10 pt-10">

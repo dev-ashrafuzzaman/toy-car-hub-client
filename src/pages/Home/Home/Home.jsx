@@ -1,4 +1,5 @@
 import Banner from "../Banner/Banner";
+import Brand from "../Brand/Brand";
 import CategorySection from "../CategorySection/CategorySection";
 import CollectionAdd from "../CollectionAdd/CollectionAdd";
 import Gallery from "../Gallery/Gallery";
@@ -13,6 +14,7 @@ const Home = () => {
             <Gallery></Gallery>
             <ReactTabs></ReactTabs>
             <CollectionAdd></CollectionAdd>
+            <Brand></Brand>
         </div>
     );
 };

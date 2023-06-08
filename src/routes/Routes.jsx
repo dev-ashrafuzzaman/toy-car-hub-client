@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import Error404Page from "../pages/Error404Page/Error404Page";
 import Blog from "../pages/Blog/Blog";
 import AllToys from "../pages/AllToys/AllToys";
+import AddToy from "../pages/Home/AddToy/AddToy";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,12 @@ const router = createBrowserRouter([
       },
       {
         path: "all-toys",
-        element: <AllToys></AllToys>
+        element: <AllToys></AllToys>,
+        loader: () => fetch(`https://toy-marketplace-server-side-chi.vercel.app/allToyCars`)
+      },
+      {
+        path: 'add-a-toy',
+        element: <AddToy></AddToy>
       }
     ],
   },
