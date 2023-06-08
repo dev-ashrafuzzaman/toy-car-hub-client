@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -19,10 +21,30 @@ const Register = () => {
         .then(user => {
             // Account creation and profile update successful
             console.log('User created:', user);
+            toast.success('User Register Sucessfull', {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
           })
           .catch(error => {
             // Handle error
             console.error('Error creating account:', error);
+            toast.error('Register Failed. Please Try Again!', {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
           });
     };
 
@@ -105,6 +127,7 @@ const Register = () => {
                             </p>
                         </div>
                     </div>
+                    <ToastContainer></ToastContainer>
                 </div>
             </div>
         </div>

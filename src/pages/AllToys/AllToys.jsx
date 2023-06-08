@@ -1,13 +1,50 @@
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import AllToysRow from "./AllToysRow";
+import { useEffect, useState } from "react";
 
 
 const AllToys = () => {
-    const allToys = useLoaderData();
+    
+    const [searchProductName , setSearchProductName] = useState('');
+
+    const [searchProduct , setSearchProduct] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://toy-marketplace-server-side-chi.vercel.app/searchByProductName?productName=${searchProductName}`)
+            .then(res => res.json())
+            .then(data => {
+                setSearchProduct(data)
+                console.log(data)
+            })
+    }, [searchProductName])
+
+    // const allToys = useLoaderData();
+    
+    const handleSearch =(event) =>{
+        event.preventDefault();
+        const searchText = event.target.toyName.value;
+        console.log(searchText);
+        setSearchProductName(searchText);
+    }
 
     return (
         <div className="container mx-auto mt-20 md:p-10 p-0">
+
             <div>
+                <h3 className="text-center mb-10 font-bold text-4xl text-[#f379a7]">All added toys: {searchProduct.length}</h3>
+
+               <div className="mb-2 flex justify-end me-16">
+
+               <form onSubmit={handleSearch} className="form-control">
+                    <div className="input-group">
+                        <input type="text" name="toyName" placeholder="Search…" className="input input-bordered" />
+                        <input className="btn hover:bg-[#f379a7] hover:text-white" type="submit" value="Search" />
+                        
+                    </div>
+                </form>
+
+               </div>
+
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
@@ -29,7 +66,7 @@ const AllToys = () => {
                         <tbody>
 
                             {
-                                allToys.map(toys => <AllToysRow
+                                searchProduct.map(toys => <AllToysRow
                                     key={toys._id}
                                     toys={toys}
                                 ></AllToysRow>)

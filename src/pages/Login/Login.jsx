@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Swal from "sweetalert2";
 
 
 const Login = () => {
-  const { signInUser , userSignWithGoogle } = useContext(AuthContext);
+  const { signInUser, userSignWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -12,27 +18,67 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true })
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login Sucessfull',
+          showConfirmButton: false,
+          timer: 2000
+        })
       })
       .catch((error) => {
         console.log(error.massage);
+        toast.error('Login Failed. Check Email/Pass', {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
   };
 
   // SignWith Google 
 
-  const handleSignWithGoogle = () =>{
+  const handleSignWithGoogle = () => {
+
     userSignWithGoogle()
-    .then((result) => {
-      const user = result.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      console.log(error.massage);
-    });
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true })
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login Sucessfull',
+          showConfirmButton: false,
+          timer: 2000
+        })
+
+      })
+      .catch((error) => {
+        console.log(error.massage);
+        toast.error('Login Field Please Try Again', {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
   }
 
 
@@ -99,8 +145,9 @@ const Login = () => {
               <div className="text-center">
                 <p className="text-center font-bold text-2xl">or</p>
                 <hr />
-                <button  onClick={handleSignWithGoogle} className="bg-[#C2E0EB] hover:bg-[#93dbf5] mt-2 p-[8px] w-full rounded-lg flex justify-center items-center gap-6"><img className="w-[35px]" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="" /> Sign in With Google</button>
+                <button onClick={handleSignWithGoogle} className="bg-[#C2E0EB] hover:bg-[#93dbf5] mt-2 p-[8px] w-full rounded-lg flex justify-center items-center gap-6"><img className="w-[35px]" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="" /> Sign in With Google</button>
               </div>
+              <ToastContainer></ToastContainer>
             </div>
           </div>
         </div>

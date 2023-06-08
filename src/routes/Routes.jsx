@@ -8,6 +8,9 @@ import Blog from "../pages/Blog/Blog";
 import AllToys from "../pages/AllToys/AllToys";
 import AddToy from "../pages/Home/AddToy/AddToy";
 import ToyDetails from "../pages/ToyDetails/ToyDetails";
+import MyToys from "../pages/MyToys/MyToys";
+import MyToyUpdate from "../pages/MyToyUpdate/MyToyUpdate";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -37,12 +40,22 @@ const router = createBrowserRouter([
       },
       {
         path: 'add-a-toy',
-        element: <AddToy></AddToy>
+        element: <PrivateRoutes><AddToy></AddToy></PrivateRoutes>
       },
       {
         path: 'toy-details/:id',
-        element: <ToyDetails></ToyDetails>,
-        loader: ({params}) => fetch(`https://toy-marketplace-server-side-chi.vercel.app/allToy/${params.id}`)
+        element: <PrivateRoutes><ToyDetails></ToyDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://toy-marketplace-server-side-chi.vercel.app/allToy/${params.id}`)
+      },
+      {
+        path: 'my-toys',
+        element: <PrivateRoutes><MyToys></MyToys></PrivateRoutes>,
+
+      },
+      {
+        path: 'update-toy-details/:id',
+        element: <PrivateRoutes><MyToyUpdate></MyToyUpdate></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://toy-marketplace-server-side-chi.vercel.app/allToy/${params.id}`)
       }
     ],
   },

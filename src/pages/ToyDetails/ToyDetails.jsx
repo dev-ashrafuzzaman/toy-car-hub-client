@@ -11,7 +11,7 @@ const ToyDetails = () => {
     return (
         <div className="container mx-auto md:p-10 p-10">
             <div className="card lg:card-side bg-base-100 p-10 shadow-xl">
-                <img className="w" src={pictureURL} alt="Album" />
+                <img className="w-[40%]" src={pictureURL} alt="Album" />
                 <div className="card-body">
                     <h2 className="text-4xl font-bold">{productName}</h2>
                     <div className="w-1/2 border">

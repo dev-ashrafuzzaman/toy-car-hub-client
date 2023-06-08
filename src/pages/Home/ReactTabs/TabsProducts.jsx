@@ -1,8 +1,30 @@
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
+
 
 const TabsProducts = ({ product }) => {
+    const {user} = useContext(AuthContext)
     const { pictureURL, productName, price, rating, _id } = product;
+
+
+    const handleLoginNotify = () =>{
+        Swal.fire({
+            title: 'You are not logged user',
+            text: "Please login first to continue !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Login'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `/toy-details/${_id}`;
+            }
+          })
+    }
     return (
         <div className="card  bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -11,8 +33,9 @@ const TabsProducts = ({ product }) => {
             <div className="card-body ">
                 <h2 className="card-title">{productName}</h2>
                 <p><span className="font-bold">Price:</span> $ {price}</p>
-                <p className="flex gap-2 items-center">Rating:
-                    <ReactStars
+                {/* <p className="flex gap-2 items-center">Rating:
+                    </p> */}
+                    <ReactStars 
                         count={5}
                         value={rating}
                         size={30}
@@ -22,9 +45,12 @@ const TabsProducts = ({ product }) => {
                         halfIcon={<i className="fa fa-star-half-alt"></i>}
                         fullIcon={<i className="fa fa-star"></i>}
                         activeColor="#ffd700"
-                    /></p>
+                    />
                 <div className="card-actions">
-                    <Link className="btn w-full bg-[#f379a7] text-white" to={`/toy-details/${_id}`}>View Details</Link>
+                    {
+                      user?.email?  <Link className="btn w-full bg-[#f379a7] text-white" to={`/toy-details/${_id}`}>View Details</Link>
+                       : <Link  onClick={handleLoginNotify} className="btn w-full bg-[#f379a7] text-white">View Details</Link>
+                    }
                 </div>
             </div>
         </div>
