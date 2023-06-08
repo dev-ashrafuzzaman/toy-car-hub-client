@@ -11,7 +11,7 @@ const ReactTabs = () => {
     const [SubCategoryProduct, setSubCategoryProduct] = useState([]);
     
     useEffect(() => {
-        fetch(`http://localhost:5000/searchBySubCategory?SubCategory=${subCategory}`)
+        fetch(`https://toy-marketplace-server-side-chi.vercel.app/searchBySubCategory?SubCategory=${subCategory}`)
             .then(res => res.json())
             .then(data => {
                 setSubCategoryProduct(data)

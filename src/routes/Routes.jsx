@@ -7,6 +7,7 @@ import Error404Page from "../pages/Error404Page/Error404Page";
 import Blog from "../pages/Blog/Blog";
 import AllToys from "../pages/AllToys/AllToys";
 import AddToy from "../pages/Home/AddToy/AddToy";
+import ToyDetails from "../pages/ToyDetails/ToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
       {
         path: 'add-a-toy',
         element: <AddToy></AddToy>
+      },
+      {
+        path: 'toy-details/:id',
+        element: <ToyDetails></ToyDetails>,
+        loader: ({params}) => fetch(`https://toy-marketplace-server-side-chi.vercel.app/allToy/${params.id}`)
       }
     ],
   },
