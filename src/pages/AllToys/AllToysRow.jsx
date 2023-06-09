@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 const AllToysRow = ({ toys }) => {
     const { sellerEmail, sellerName, productName, price, availableQuantity, SubCategory, pictureURL, _id } = toys;
     const {user} = useContext(AuthContext);
+    
 
     const handleLoginNotify = () =>{
         Swal.fire({

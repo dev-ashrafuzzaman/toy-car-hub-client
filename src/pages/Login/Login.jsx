@@ -4,9 +4,11 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 
 const Login = () => {
+  useTitle('Login')
   const { signInUser, userSignWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();

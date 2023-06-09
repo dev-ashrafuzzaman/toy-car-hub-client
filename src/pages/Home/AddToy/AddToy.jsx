@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../../hooks/useTitle";
 
 
 const AddToy = () => {
+    useTitle('Add Toy')
     const { user } = useContext(AuthContext)
 
     const handleAddAToyDatabase = (event) => {
@@ -114,11 +116,11 @@ const AddToy = () => {
                                     </div>
                                 </div>
                                 <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Detail description</span>
-                                        </label>
-                                        <input type='text' placeholder="Detail description" name="productDetails" className="input input-bordered h-[80px]" />
-                                    </div>
+                                    <label className="label">
+                                        <span className="label-text">Detail description</span>
+                                    </label>
+                                    <input type='text' placeholder="Detail description" name="productDetails" className="input input-bordered h-[80px]" />
+                                </div>
                                 <div className="form-control w-full mt-6">
                                     <input type="submit" className="btn text-white font-bold bg-[#f379a7]" value="Added a Product" />
                                 </div>

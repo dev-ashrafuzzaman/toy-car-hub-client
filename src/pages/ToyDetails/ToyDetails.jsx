@@ -1,12 +1,14 @@
 import ReactStars from "react-rating-stars-component";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 
 
 const ToyDetails = () => {
+    useTitle('Toy Details')
     const toyDetails = useLoaderData();
     const { sellerEmail, sellerName, productName, price, availableQuantity, SubCategory, rating, pictureURL, productDetails,
-        _id } = toyDetails;
+    } = toyDetails;
 
     return (
         <div className="container mx-auto md:p-10 p-10">
@@ -32,7 +34,7 @@ const ToyDetails = () => {
                                 fullIcon={<i className="fa fa-star"></i>}
                                 activeColor="#ffd700"
                             />
-                            </p>
+                        </p>
                         <p> <span className="font-bold">Product Details:</span>   {productDetails}</p>
                         <div className="w-1/2 my-2 border">
                         </div>

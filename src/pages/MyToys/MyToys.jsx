@@ -3,20 +3,24 @@ import { useContext, useEffect, useState } from "react";
 import MyToysRow from "./MyToysRow";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
+
 
 
 const MyToys = () => {
+    useTitle('My Toys')
     const { user } = useContext(AuthContext)
     const [loginUserByProduct, setSubCategoryProduct] = useState([]);
+    const [sortingPrice, setSortingPrice] = useState(false);
 
     useEffect(() => {
-        fetch(`https://toy-marketplace-server-side-chi.vercel.app/sellerEmail?sellerEmail=${user?.email}`)
+        fetch(`https://toy-marketplace-server-side-chi.vercel.app/sellerEmail?sellerEmail=${user?.email}&sort=${sortingPrice ? 'asc' : 'desc'}`)
             .then(res => res.json())
             .then(data => {
                 setSubCategoryProduct(data)
                 console.log(data)
             })
-    }, [])
+    }, [sortingPrice])
 
     // handle Delete
     const handleToyDelete = (id) => {
@@ -53,6 +57,12 @@ const MyToys = () => {
         <div className="container mx-auto mt-20 md:p-10 p-0">
             <div>
                 <h3 className="text-center mb-10 font-bold text-4xl text-[#f379a7]">My added toys: {loginUserByProduct.length}</h3>
+                <div className="flex justify-end me-24">
+                    <button
+                        className="btn bg-[#f379a7] text-white"
+                        onClick={() => setSortingPrice(!sortingPrice)}
+                    >{sortingPrice ? 'Toy Price => High-Low' : 'Toy Price => Low-High'}</button>
+                </div>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}

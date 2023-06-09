@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from "../../hooks/useTitle";
 
 
 
 const Register = () => {
+    useTitle('Register')
     const { createAccountWithEmailAndPassword } = useContext(AuthContext);
 
     const handleRegister = (event) => {
@@ -16,36 +18,36 @@ const Register = () => {
         const email = form.email.value;
         const photoUrl = form.photoUrl.value;
         const password = form.password.value;
-        console.log(email, password , name , photoUrl);
-        createAccountWithEmailAndPassword(email, password , name , photoUrl)
-        .then(user => {
-            // Account creation and profile update successful
-            console.log('User created:', user);
-            toast.success('User Register Sucessfull', {
-                position: "top-right",
-                autoClose: 4000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
+        console.log(email, password, name, photoUrl);
+        createAccountWithEmailAndPassword(email, password, name, photoUrl)
+            .then(user => {
+                // Account creation and profile update successful
+                console.log('User created:', user);
+                toast.success('User Register Sucessfull', {
+                    position: "top-right",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
                 });
-          })
-          .catch(error => {
-            // Handle error
-            console.error('Error creating account:', error);
-            toast.error('Register Failed. Please Try Again!', {
-                position: "top-right",
-                autoClose: 4000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
+            })
+            .catch(error => {
+                // Handle error
+                console.error('Error creating account:', error);
+                toast.error('Register Failed. Please Try Again!', {
+                    position: "top-right",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
                 });
-          });
+            });
     };
 
     return (

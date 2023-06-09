@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import "./Error404Page.css";
+import useTitle from "../../hooks/useTitle";
 
 const Error404Page = () => {
+  useTitle('Error')
   return (
     <div className="text-center error-404-page">
       <div className="flex justify-center">

@@ -1,13 +1,14 @@
 // import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import AllToysRow from "./AllToysRow";
 import { useEffect, useState } from "react";
 
 
 const AllToys = () => {
-    
-    const [searchProductName , setSearchProductName] = useState('');
+    useTitle('All Toys')
+    const [searchProductName, setSearchProductName] = useState('');
 
-    const [searchProduct , setSearchProduct] = useState([]);
+    const [searchProduct, setSearchProduct] = useState([]);
 
     useEffect(() => {
         fetch(`https://toy-marketplace-server-side-chi.vercel.app/searchByProductName?productName=${searchProductName}`)
@@ -19,8 +20,8 @@ const AllToys = () => {
     }, [searchProductName])
 
     // const allToys = useLoaderData();
-    
-    const handleSearch =(event) =>{
+
+    const handleSearch = (event) => {
         event.preventDefault();
         const searchText = event.target.toyName.value;
         console.log(searchText);
@@ -33,17 +34,17 @@ const AllToys = () => {
             <div>
                 <h3 className="text-center mb-10 font-bold text-4xl text-[#f379a7]">All added toys: {searchProduct.length}</h3>
 
-               <div className="mb-2 flex justify-end me-16">
+                <div className="mb-2 flex justify-end me-16">
 
-               <form onSubmit={handleSearch} className="form-control">
-                    <div className="input-group">
-                        <input type="text" name="toyName" placeholder="Search…" className="input input-bordered" />
-                        <input className="btn hover:bg-[#f379a7] hover:text-white" type="submit" value="Search" />
-                        
-                    </div>
-                </form>
+                    <form onSubmit={handleSearch} className="form-control">
+                        <div className="input-group">
+                            <input type="text" name="toyName" placeholder="Search…" className="input input-bordered" />
+                            <input className="btn hover:bg-[#f379a7] hover:text-white" type="submit" value="Search" />
 
-               </div>
+                        </div>
+                    </form>
+
+                </div>
 
                 <div className="overflow-x-auto">
                     <table className="table">
