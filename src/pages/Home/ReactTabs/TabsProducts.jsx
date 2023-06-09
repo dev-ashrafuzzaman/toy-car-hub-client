@@ -21,7 +21,7 @@ const TabsProducts = ({ product }) => {
             confirmButtonText: 'Login'
           }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = `/toy-details/${_id}`;
+                window.location.href = `/toy/${_id}`;
             }
           })
     }
@@ -48,7 +48,7 @@ const TabsProducts = ({ product }) => {
                     />
                 <div className="card-actions">
                     {
-                      user?.email?  <Link className="btn w-full bg-[#f379a7] text-white" to={`/toy-details/${_id}`}>View Details</Link>
+                      user?.email?  <Link className="btn w-full bg-[#f379a7] text-white" to={`/toy/${_id}`}>View Details</Link>
                        : <Link  onClick={handleLoginNotify} className="btn w-full bg-[#f379a7] text-white">View Details</Link>
                     }
                 </div>
