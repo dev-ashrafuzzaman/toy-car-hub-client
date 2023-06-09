@@ -3,12 +3,18 @@ import ReactStars from "react-rating-stars-component";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 
 const TabsProducts = ({ product }) => {
     const {user} = useContext(AuthContext)
     const { pictureURL, productName, price, rating, _id } = product;
 
+    useEffect(() =>{
+        Aos.init({duration: 1500})
+    } ,[])
 
     const handleLoginNotify = () =>{
         Swal.fire({
@@ -26,7 +32,7 @@ const TabsProducts = ({ product }) => {
           })
     }
     return (
-        <div className="card  bg-base-100 shadow-xl">
+        <div data-aos="zoom-out-down" className="card  bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
                 <img src={pictureURL} alt="Shoes" className="rounded-xl" />
             </figure>
