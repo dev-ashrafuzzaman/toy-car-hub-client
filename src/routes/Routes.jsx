@@ -9,7 +9,6 @@ import AllToys from "../pages/AllToys/AllToys";
 import AddToy from "../pages/Home/AddToy/AddToy";
 import ToyDetails from "../pages/ToyDetails/ToyDetails";
 import MyToys from "../pages/MyToys/MyToys";
-import MyToyUpdate from "../pages/MyToyUpdate/MyToyUpdate";
 import PrivateRoutes from "./PrivateRoutes";
 import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 

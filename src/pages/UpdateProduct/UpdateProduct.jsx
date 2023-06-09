@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdateProduct = () => {
     const toyDetails = useLoaderData();
-    const { price, availableQuantity, productDetails, _id , productName } = toyDetails;
+    const { price, availableQuantity, productDetails, _id, productName } = toyDetails;
     const handleToyUpdateToDatabase = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -19,26 +19,43 @@ const UpdateProduct = () => {
         }
         console.log(UpdateProductInfo)
 
-      fetch(`https://toy-marketplace-server-side-chi.vercel.app/updateProduct/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(UpdateProductInfo)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Your Toy has been saved to Database',
-                        showConfirmButton: false,
-                        timer: 1500
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Your Toy Details won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`https://toy-marketplace-server-side-chi.vercel.app/updateProduct/${_id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(UpdateProductInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        if (data.modifiedCount > 0) {
+                            Swal.fire(
+                                'Product Updated!',
+                                'Your Toy Details has been Updated.',
+                                'success'
+                            )
+                        }
+                        console.log(data)
                     })
-                }
-                console.log(data)
-            })
+
+
+
+            }
+        })
+
+
     }
 
     return (
@@ -70,7 +87,7 @@ const UpdateProduct = () => {
                                     <input type='text' placeholder="Detail description" defaultValue={productDetails} name="productDetails" className="input input-bordered h-[80px]" />
                                 </div>
                                 <div className="form-control w-full mt-6">
-                                    <input type="submit" className="btn text-white font-bold bg-[#f379a7]" value="Added a Product" />
+                                    <input type="submit" className="btn text-white font-bold bg-[#f379a7]" value="Update Product" />
                                 </div>
                             </form>
                         </div>
