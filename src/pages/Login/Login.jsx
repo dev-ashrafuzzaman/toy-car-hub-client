@@ -47,6 +47,7 @@ const Login = () => {
           theme: "light",
         });
       });
+      form.reset();
   };
 
   // SignWith Google 
@@ -147,7 +148,10 @@ const Login = () => {
               <div className="text-center">
                 <p className="text-center font-bold text-2xl">or</p>
                 <hr />
-                <button onClick={handleSignWithGoogle} className="bg-[#C2E0EB] hover:bg-[#93dbf5] mt-2 p-[8px] w-full rounded-lg flex justify-center items-center gap-6"><img className="w-[35px]" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="" /> Sign in With Google</button>
+                <button onClick={handleSignWithGoogle} className="bg-[#C2E0EB] mb-2 hover:bg-[#93dbf5] mt-2 p-[8px] w-full rounded-lg flex justify-center items-center gap-6"><img className="w-[35px]" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="" /> Sign in With Google</button>
+                <hr className="mb-2" />
+                <p>You can use demo account if necessary</p>
+                <p>Email: demo@toy.com  Pass: 123456</p>
               </div>
               <ToastContainer></ToastContainer>
             </div>

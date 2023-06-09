@@ -48,8 +48,8 @@ const AllToysRow = ({ toys }) => {
                 <p className="text-black font-semibold"> {productName}</p>
             </td>
             <td>{SubCategory}</td>
-            <td>{price}</td>
-            <td><p className="bg-[#f379a7] px-4 text-center text-white font-bold rounded-xl">$ {availableQuantity}</p></td>
+            <td>{availableQuantity}</td>
+            <td><p className="bg-[#f379a7] px-4 text-center text-white font-bold rounded-xl">$ {price}</p></td>
             <th>
                 {
                     user?.email ? <Link className="btn btn-ghost bg-[#57c4e4] font-semibold text-white hover:text-black btn-xs" to={`/toy/${_id}`}>Details</Link>

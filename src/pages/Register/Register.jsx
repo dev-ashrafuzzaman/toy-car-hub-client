@@ -48,6 +48,7 @@ const Register = () => {
                     theme: "dark",
                 });
             });
+            form.reset();
     };
 
     return (

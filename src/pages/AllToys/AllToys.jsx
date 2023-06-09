@@ -24,8 +24,9 @@ const AllToys = () => {
     const handleSearch = (event) => {
         event.preventDefault();
         const searchText = event.target.toyName.value;
-        console.log(searchText);
         setSearchProductName(searchText);
+        event.target.reset();
+
     }
 
     return (

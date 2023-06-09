@@ -19,7 +19,7 @@ const TabsProducts = ({ product }) => {
     const handleLoginNotify = () =>{
         Swal.fire({
             title: 'You are not logged user',
-            text: "Please login first to continue !",
+            text: "You have to log in first to view details!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
