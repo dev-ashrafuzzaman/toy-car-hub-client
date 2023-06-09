@@ -1,11 +1,10 @@
-
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
 
 
-const MyToyUpdate = () => {
+const UpdateProduct = () => {
     const toyDetails = useLoaderData();
-    const {price, availableQuantity ,productDetails ,_id , productName} = toyDetails;
+    const { price, availableQuantity, productDetails, _id , productName } = toyDetails;
     const handleToyUpdateToDatabase = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -19,21 +18,21 @@ const MyToyUpdate = () => {
             productDetails
         }
         console.log(UpdateProductInfo)
-        fetch(`https://toy-marketplace-server-side-chi.vercel.app/allToy/${_id}` , {
+
+      fetch(`https://toy-marketplace-server-side-chi.vercel.app/updateProduct/${_id}`, {
             method: 'PUT',
             headers: {
-                "content-type" : "application/json"
+                'content-type': 'application/json'
             },
             body: JSON.stringify(UpdateProductInfo)
-
         })
             .then(res => res.json())
             .then(data => {
-                if (data.modifiedCount > 0) {
+                if (data) {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Toy Details has been Update to Database',
+                        title: 'Your Toy has been saved to Database',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -44,7 +43,7 @@ const MyToyUpdate = () => {
 
     return (
         <div className="">
-            <h2 className="text-center md:mt-20 mt-10 font-bold text-4xl text-[#f379a7]">Update Toy: {productName}</h2>
+            <h2 className="text-center md:mt-20 mt-10 font-bold text-4xl text-[#f379a7]">Update My Toy Details: {productName}</h2>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col">
                     <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
@@ -65,11 +64,11 @@ const MyToyUpdate = () => {
                                     </div>
                                 </div>
                                 <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Detail description</span>
-                                        </label>
-                                        <input type='text' placeholder="Detail description" defaultValue={productDetails} name="productDetails" className="input input-bordered h-[80px]" />
-                                    </div>
+                                    <label className="label">
+                                        <span className="label-text">Detail description</span>
+                                    </label>
+                                    <input type='text' placeholder="Detail description" defaultValue={productDetails} name="productDetails" className="input input-bordered h-[80px]" />
+                                </div>
                                 <div className="form-control w-full mt-6">
                                     <input type="submit" className="btn text-white font-bold bg-[#f379a7]" value="Added a Product" />
                                 </div>
@@ -82,4 +81,4 @@ const MyToyUpdate = () => {
     );
 };
 
-export default MyToyUpdate;
+export default UpdateProduct;

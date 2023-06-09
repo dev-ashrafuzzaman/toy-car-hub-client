@@ -11,6 +11,7 @@ import ToyDetails from "../pages/ToyDetails/ToyDetails";
 import MyToys from "../pages/MyToys/MyToys";
 import MyToyUpdate from "../pages/MyToyUpdate/MyToyUpdate";
 import PrivateRoutes from "./PrivateRoutes";
+import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -52,11 +53,12 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><MyToys></MyToys></PrivateRoutes>,
 
       },
+
       {
-        path: 'update-toy-details/:id',
-        element: <PrivateRoutes><MyToyUpdate></MyToyUpdate></PrivateRoutes>,
+        path: 'update-product/:id',
+        element: <PrivateRoutes><UpdateProduct></UpdateProduct></PrivateRoutes>,
         loader: ({ params }) => fetch(`https://toy-marketplace-server-side-chi.vercel.app/allToy/${params.id}`)
-      }
+      },
     ],
   },
   {

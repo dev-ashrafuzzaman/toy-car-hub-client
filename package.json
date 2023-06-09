@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "aos": "^2.3.4",
+    "cors-anywhere": "^0.4.4",
     "firebase": "^9.22.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
