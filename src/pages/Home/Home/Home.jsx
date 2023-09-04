@@ -6,6 +6,8 @@ import CategorySection from "../CategorySection/CategorySection";
 import CollectionAdd from "../CollectionAdd/CollectionAdd";
 import Gallery from "../Gallery/Gallery";
 import ReactTabs from "../ReactTabs/ReactTabs";
+import AgesSection from "../AgesSection/AgesSection";
+import BackToSchool from "../BackToSchool/BackToSchool";
 
 
 const Home = () => {
@@ -18,6 +20,8 @@ const Home = () => {
             <Gallery></Gallery>
             <ReactTabs></ReactTabs>
             <CollectionAdd></CollectionAdd>
+            <AgesSection></AgesSection>
+            <BackToSchool></BackToSchool>
             <Brand></Brand>
         </div>
     );
